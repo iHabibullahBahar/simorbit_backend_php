@@ -1,8 +1,5 @@
 <?php
     $servername = "localhost";
-    // $username = "chat_shower";
-    // $password = "7Vdz7^42a";
-    // $dbname = "notundeal_db";
     $username = "root";
     $password = "";
     $dbname = "simorbit_db";
