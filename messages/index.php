@@ -1,7 +1,7 @@
 <?php
 	include('../config.php');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if($_POST['secret']  === "X17660865421243894"){
+        if($_POST['secret']  === "X1766086542124389214"){
             $id = $_POST['id'];
             $sql = "SELECT * FROM messages WHERE device_id = '$id'";
             $result = $conn->query($sql);
