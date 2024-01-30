@@ -1,6 +1,10 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 	include('../config.php');
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if($_POST['secret']  === "X1766086542124389214"){
             $imei = $_POST['imei'];
             $sql = "SELECT * FROM devices WHERE imei = '$imei'";
@@ -9,7 +13,7 @@
             $id = 0;
             if(mysqli_num_rows($result)>0){
                 while($row = mysqli_fetch_assoc($result)){
-                    $id = $row['id'];
+                    $id = (int)$row['id'];
                     $imei = $row['imei'];
                     $last_login = $row['last_login'];
                     $data[] = ['id'=>$id,'imei'=>$imei, 'last_login'=>$last_login];
@@ -19,7 +23,7 @@
                 $conn->query($sql);
             }
             else{
-                echo json_encode(['status'=>false, 'data'=>'No data found']);
+                echo json_encode(['status'=>false, 'data'=> []]);
             }
         }
         else{
